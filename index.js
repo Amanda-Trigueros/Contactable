@@ -1,5 +1,5 @@
 import { login , logout } from "./src/services/session-services.js";
-import { showContact } from "./src/services/contact-services.js";
+import { createContact, deleteContact, showContact, editContact} from "./src/services/contact-services.js";
 import { listContacts } from "./src/services/contact-services.js";
 
 // import DOMHandler from "./src/dom-handler.js";
@@ -9,6 +9,18 @@ const credentials = {
 	password: "123456"
 };
 
+
+const newContact = {
+    name: "New Contact 4",
+    email: "new_contact@mail.com",
+    number: "987654321",
+    relation: "Friends",
+  };
+
+  
+const edit_contact = {
+    name: "Camila",
+  };
 // async function init() {
 //     try {
 //       const token = sessionStorage.getItem(tokenKey);
@@ -28,14 +40,26 @@ const credentials = {
 
 async function test(){
     try {
-        const data = await login(credentials);
-        console.log(data)
+        const user = await login(credentials);
+        console.log(user)
 
         // const user = await showContact(1);
         // console.log(user)
+        // const newUser = await createContact(newContact);
+        // console.log(newUser)
 
-        const user = await listContacts();
-        console.log(user)
+        const contactList_1 = await listContacts();
+        console.log(contactList_1)
+
+        // const newUser = await deleteContact(134);
+        // console.log(newUser)
+
+        const newUser = await editContact(137, edit_contact);
+        console.log(newUser)
+
+
+        const contactList = await listContacts();
+        console.log(contactList)
 
         // // const data = await logout();
         // // console.log(data)
