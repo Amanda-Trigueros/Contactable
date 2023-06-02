@@ -2,7 +2,7 @@ import { BASE_URI } from "../config.js";
 import { tokenKey } from "../config.js";
 import apiFetch from "./api-fetch.js";
 
-newContact = {
+const newContact = {
   name: "New Contact 4",
   email: "new_contact@mail.com",
   number: "987654321",
@@ -16,17 +16,18 @@ export async function createContact(
 }
 
 export async function deleteContact(id) {
-  return await apiFetch(`contact/${id}`, { method: "DELETE" });
+  return  await apiFetch(`contacts/${id}`, { method: "DELETE"});
 }
 
 export async function showContact(id) {
-  return await apiFetch(`contact/${id}`, { method: "GET" });
+   const show =  await apiFetch(`contacts/${id}`, { method: "GET"});
+   return show
 }
 
 export async function editContact(id) {
-  return await apiFetch(`contact/${id}`, { method: "PATCH" });
+  return await apiFetch(`contacts/${id}`, { method: "PATCH" });
 }
 
-// export async function editContact(id) {
-//   return await apiFetch(`contact/${id}`, { method: "PATCH" });
-// }
+export async function listContacts() {
+  return await apiFetch(`contacts`, { method: "GET" });
+}
