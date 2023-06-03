@@ -1,8 +1,9 @@
 import DOMHandler from "../dom-handler.js";
 import { input } from "../components/input.js";
+import { login } from "../services/session-services.js";
 
 function render() {
-//   const { loginError } = this.state;
+  //   const { loginError } = this.state;
   return `
     <main class="section">
       <section class="container">
@@ -53,11 +54,10 @@ function listenSubmitForm() {
       };
 
       const user = await login(credentials);
-    //   STORE.user = user;
-    //   await STORE.fetchCategories();
+      //   STORE.user = user;
+      //   await STORE.fetchCategories();
 
-    //   DOMHandler.load(HomePage);
-    console.log(credentials)
+      console.log(user);
     } catch (error) {
       this.state.loginError = error.message;
       DOMHandler.reload();
